@@ -2,29 +2,35 @@
 
 public class Card
 {
-    private int _creditLimit;
-    private bool _usedCredit;
+    protected decimal _balance;
 
-    public Card(int creditLimit, bool usedCredit)
+    public Card(decimal balance)
     {
-        _creditLimit = creditLimit;
-        _usedCredit = usedCredit;
+        _balance = balance;
     }
     
-    public bool AvailableCredit
+    public decimal Balance => _balance;
+
+    public virtual decimal Pay(decimal amount)
     {
-        get { return _usedCredit; }
+        if (_balance >= amount)
+        {
+            _balance -= amount;
+        }
+        return amount;
     }
 
-    public void TakeCredit(int amount)
+    public virtual bool Deposit(decimal amount)
     {
-        _usedCredit = true;
-        _creditLimit -= amount;
-    }
-
-    public void PayCredit(int amount)
-    {
-        _usedCredit = false;
-        _creditLimit += amount;
+        if (amount == 0)
+        {
+            return false;
+        }
+        else
+        {
+            _balance += amount;
+            return true;
+        }
+        
     }
 }
