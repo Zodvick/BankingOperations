@@ -39,12 +39,10 @@ public class CreditCard : Card
             }
             else
             {
-                if (amount > toRepay)
-                {
                     _creditBalance = _creditLimit;
-                }
+                    base.Deposit(amount - toRepay);
+                
             }
-            base.Deposit(amount - toRepay);
             return true;
     }
 }

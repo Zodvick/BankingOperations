@@ -4,9 +4,9 @@
   {
     static void Main(string[] args)
     {
-        Card card = new CreditCard(2000, 10000);
-        card.Pay(5000);
-        card.Deposit(5500);
+        Card card = new CreditCard(100, 100);
+        card.Pay(150);
+        card.Deposit(165);
         Console.WriteLine(card.Balance);
         Console.ReadKey();
     }
